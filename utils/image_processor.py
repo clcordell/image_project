@@ -1,5 +1,6 @@
 import os
 from PIL import Image
+from .utils import truncate
 
 
 def process_images(output_file, percentage):
@@ -10,7 +11,7 @@ def process_images(output_file, percentage):
         width, height = image.size
         bg_count = next(n for n, c in image.getcolors(width * height) if c == (255, 255, 255))
         img_count = width * height - bg_count
-        img_percent = 100 - (img_count * 100.0 / width / height)
+        img_percent = truncate(100 - (img_count * 100.0 / width / height), 0)
         if img_percent >= percentage:
             output_file.write(f"{filename}, {img_percent}%")
             output_file.write("\n")
