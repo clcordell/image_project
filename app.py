@@ -10,9 +10,8 @@ class App:
     config.read('settings.ini')
     config.sections()
     percentage = int(config['SETTINGS']['PERCENTAGE'])
-    output_file_name = int(config['SETTINGS']['OUTPUT_FILE'])
+    output_file_name = config['SETTINGS']['OUTPUT_FILE']
     print(f"Image - Write Space Checker\nDeveloped by Connor Cordell - 2019")
-    print("Processing...")
 
     start_time = time.time()
     output_file = open(output_file_name, "a+")
